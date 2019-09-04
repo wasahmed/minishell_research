@@ -13,12 +13,18 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-int     main()
+int     main(int ac, char **av)
 {
     char    cwd[1000];
 
-    //cwd = (char*)malloc(sizeof(char) * 1000);
-    printf("%s", getcwd(cwd, sizeof(cwd)));
+    if (ac == 2)
+    {
+        if (strcmp(av[1], "pwd") == 0)
+            printf("%s", getcwd(cwd, sizeof(cwd)));
+        else
+            printf("minishell: command not found");
+    }
     return (0);
 }
